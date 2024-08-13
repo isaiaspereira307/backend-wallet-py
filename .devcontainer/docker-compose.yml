@@ -1,4 +1,15 @@
 services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+
   backend_wallet:
     build:
       context: .
@@ -6,6 +17,8 @@ services:
     command: sleep infinity
     volumes:
       - ..:/workspace:cached
+    depends_on:
+      - db
     networks:
       - mynetwork
 
@@ -13,5 +26,6 @@ networks:
   mynetwork:
     driver: bridge
 
-
+volumes:
+  postgres_data:
 
