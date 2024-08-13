@@ -2,10 +2,12 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Python: backend django",
+        "name": "Python Debugger: Django",
         "type": "debugpy",
         "request": "launch",
-        "program": "${workspaceFolder}/manage.py runserver",
+        "program": "${workspaceFolder}/wallet/manage.py",
+        "args": "runserver",
+        "django": true,
         "justMyCode": true
       }
     ]
